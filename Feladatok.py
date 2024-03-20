@@ -84,4 +84,31 @@ class Feladatok():
             self.robot.drive(100,0)
         self.robot.stop(Stop.BRAKE)
 
+    def vonalutanmegall2(self):
+        vege=False
+        fekete=False
+        self.robot.drive(100,0)
+        while not vege:
+            if self.cs.reflection()<39:
+                fekete = True
+            if fekete and self.cs.reflection()>44: 
+                vege = True
+        self.robot.stop(Stop.BRAKE)
+
+
+    def hanyvonal(self,db,seb,hatar):
+        for vonalank in range(db):
+            vege=False
+            fekete=False
+            self.robot.drive(seb,0)
+            while not vege:
+                if self.cs.reflection()<hatar:
+                    fekete = True
+                if fekete and self.cs.reflection()>hatar+5: 
+                    vege = True
+            self.robot.stop(Stop.BRAKE)
+
+    def fel1(self):
+        self.hanyvonal(4,100,39)
+
         

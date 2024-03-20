@@ -13,7 +13,9 @@ oraiMunka=Feladatok.Feladatok()
 #oraiMunka.akku2()
 #oraiMunka.visszamenes()
 #oraiMunka.utbautkozes()
-oraiMunka.vonalrajzolas2()
+#oraiMunka.vonalrajzolas2()
+oraiMunka.vonalutanmegall2()
+oraiMunka.fel1()
 
 
 oraiMunka.csipog()
