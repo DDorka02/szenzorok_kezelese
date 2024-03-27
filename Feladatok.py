@@ -109,6 +109,57 @@ class Feladatok():
             self.robot.stop(Stop.BRAKE)
 
     def fel1(self):
-        self.hanyvonal(4,100,39)
+        self.hanyvonal(5,100,39)
 
-        
+    def fel1hatra(self):
+        self.hanyvonal(5,-100,39)
+
+    def feladat03271d(self):
+        hosszak= []
+        for vonalank in range(5):
+            vege=False
+            fekete=False
+            self.robot.drive(100,0)
+            while not vege:
+                if self.cs.reflection()<39 and not fekete:
+                    fekete = True
+                    self.ido.reset()
+                if fekete and self.cs.reflection()>44: 
+                    vege = True
+                    hossz=self.ido.time()
+                    hosszak.append(hossz)
+        self.robot.stop(Stop.BRAKE)
+        print(hosszak)
+        return hosszak
+
+    def feladat03271e(self):
+        hosszak = self.feladat03271d()
+        maxi = 0
+        mini = 0
+        for index in range(len(hosszak)):
+            if hosszak[index]< hosszak[mini]:
+                mini = index
+            if hosszak[index]> hosszak[maxi]:
+                maxi = index
+
+        for csipog in range(maxi+1):
+            self.ev3.speaker.beep(50,500)
+            wait(100)
+
+    def feladat03271f(self):
+        hosszak = self.feladat03271d()
+        maxi = 0
+        mini = 0
+        for index in range(len(hosszak)):
+            if hosszak[index]< hosszak[mini]:
+                mini = index
+            if hosszak[index]> hosszak[maxi]:
+                maxi = index
+
+        kozepertek=(hosszak[mini]+hosszak[maxi])/2
+        for index in range(len(hosszak)):
+            if hosszak[index]<kozepertek:
+                self.ev3.speaker.beep(440,100)
+            else:
+                self.ev3.speaker.beep(440,200)
+            wait(100)
