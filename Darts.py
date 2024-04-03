@@ -64,12 +64,26 @@ class Darts():
         wait(1000)
 
     def darts2b(self): 
-        #self.ev3.screen.draw_box(172,40,177,80,fill=True, color=Color.BLACK)
+        self.ev3.screen.draw_box(172,40,177,80,fill=True, color=Color.BLACK)
         y = random.randint(0,127)
         #self.ev3.screen.draw_circle(0, y, 2, fill=True, color=Color.BLACK)
 
         for i in range(184):
-            self.ev3.screen.draw_box(172,40,177,80,fill=True, color=Color.BLACK)
+            #self.ev3.screen.draw_box(172,40,177,80,fill=True, color=Color.BLACK)
+            self.ev3.screen.draw_circle(i, y, 4, fill=True, color=Color.BLACK)
+            wait(30)
+            self.ev3.screen.draw_circle(i, y, 4, fill=True, color=Color.WHITE)
+        wait(5000)
+
+    def darts3(self): 
+        self.ev3.screen.draw_box(172,40,177,80,fill=True, color=Color.BLACK)
+        y = random.randint(0,127)
+        #self.ev3.screen.draw_circle(0, y, 2, fill=True, color=Color.BLACK)
+        valtozasY = random.randint(-3,3)
+        for i in range(184):
+            #self.ev3.screen.draw_box(172,40,177,80,fill=True, color=Color.BLACK)
+            if i%16 == 0:
+                y -= valtozasY
             self.ev3.screen.draw_circle(i, y, 4, fill=True, color=Color.BLACK)
             wait(30)
             self.ev3.screen.draw_circle(i, y, 4, fill=True, color=Color.WHITE)
